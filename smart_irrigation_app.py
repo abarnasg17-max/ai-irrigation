@@ -24,11 +24,11 @@ st.set_page_config(page_title="AI Smart Irrigation", layout="centered")
 MODEL_PATH = "water_model_realistic.pkl"
 
 if not os.path.exists(MODEL_PATH):
-    with st.spinner("📥 Downloading AI model... please wait"):
-        file_id = "1ltGYrPEuiNL_5m5BuzDs0mp_AYJbVWmy"
-        url = f"https://drive.google.com/uc?id={file_id}"
-        gdown.download(url, MODEL_PATH, quiet=False)
-
+    with st.spinner("📥 Downloading AI model..."):
+        url = "https://www.dropbox.com/scl/fi/l917bj47hhys8v812l6tt/water_model_realistic.pkl?rlkey=p7tbm5skk54tm5qo6h4xdqgcp&st=cc6ei33c&dl=1"   # ?dl=1 link
+        response = requests.get(url)
+        with open(MODEL_PATH, "wb") as f:
+            f.write(response.content)
 
 # ------------------------------------------------------------
 # SESSION STATE INIT
